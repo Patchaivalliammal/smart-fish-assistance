@@ -6,7 +6,7 @@ import streamlit as st
 FISH_DATA = {
     "Salmon": {
         "emoji": "🐟",
-        "image": "https://www.themealdb.com/images/ingredients/Salmon.png",
+        "image": "https://www.fisheries.noaa.gov/s3/styles/original/s3/2022-05/640x427-Salmon.jpg",
         "best_use": "Indian Style Curry",
         "cleaning": [
             "Remove head and tail.",
@@ -40,7 +40,7 @@ FISH_DATA = {
     },
     "Tuna": {
         "emoji": "🐠",
-        "image": "https://www.themealdb.com/images/ingredients/Tuna.png",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/5/56/Bigeye_tuna.png",
         "best_use": "Deep Fry",
         "cleaning": [
             "Remove scales and fins.",
@@ -71,7 +71,7 @@ FISH_DATA = {
     },
     "Shrimp": {
         "emoji": "🦐",
-        "image": "https://www.themealdb.com/images/ingredients/Shrimp.png",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Shrimp_on_ice.jpg",
         "best_use": "Indian Spiced Side Dish",
         "cleaning": [
             "Remove head and legs.",
@@ -102,7 +102,7 @@ FISH_DATA = {
     },
     "Mackerel": {
         "emoji": "🐡",
-        "image": "https://www.themealdb.com/images/ingredients/Mackerel.png",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Mackerel_at_fish_market.jpg",
         "best_use": "Grilled or Curry",
         "cleaning": [
             "Remove scales.",
@@ -131,7 +131,7 @@ FISH_DATA = {
     },
     "Crab": {
         "emoji": "🦀",
-        "image": "https://www.themealdb.com/images/ingredients/Crab.png",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/3/35/Blue_crab_on_white_background.jpg",
         "best_use": "Crab Masala",
         "cleaning": [
             "Detach the top shell and discard gills.",
@@ -163,7 +163,7 @@ FISH_DATA = {
     },
     "Octopus": {
         "emoji": "🐙",
-        "image": "https://www.themealdb.com/images/ingredients/Octopus.png",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Octopus_vulgaris_Mallorca.jpg",
         "best_use": "Grilled Octopus",
         "cleaning": [
             "Remove beak and ink sac.",
@@ -279,9 +279,3 @@ if fish_choice:
         for benefit in fish["benefits"]:
             st.markdown(f"<p style='color:green;'>✅ {benefit}</p>", unsafe_allow_html=True)
 
-
-    # Benefits Tab
-    with tab3:
-        st.success("### 🌿 Health Benefits")
-        for benefit in fish["benefits"]:
-            st.markdown(f"<p style='color:green;'>✅ {benefit}</p>", unsafe_allow_html=True)
