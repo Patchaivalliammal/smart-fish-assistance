@@ -6,7 +6,7 @@ import streamlit as st
 FISH_DATA = {
     "Salmon": {
         "emoji": "🐟",
-        "image": "https://www.fisheries.noaa.gov/s3/styles/original/s3/2022-05/640x427-Salmon.jpg",
+        "image": "https://recipes.net/wp-content/uploads/2022/06/steelhead-vs-salmon.jpg",
         "best_use": "Indian Style Curry",
         "cleaning": [
             "Remove head and tail.",
@@ -40,7 +40,7 @@ FISH_DATA = {
     },
     "Tuna": {
         "emoji": "🐠",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/5/56/Bigeye_tuna.png",
+        "image": "https://www.bigbasket.com/media/uploads/p/xl/40227733_1-fresho-yellofin-tuna-steaks.jpg",
         "best_use": "Deep Fry",
         "cleaning": [
             "Remove scales and fins.",
@@ -71,7 +71,7 @@ FISH_DATA = {
     },
     "Shrimp": {
         "emoji": "🦐",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Shrimp_on_ice.jpg",
+        "image": "https://www.lepicerieduchateau.com/wp-content/uploads/2020/11/CREVETTES-ROSES-scaled.jpg",
         "best_use": "Indian Spiced Side Dish",
         "cleaning": [
             "Remove head and legs.",
@@ -102,7 +102,7 @@ FISH_DATA = {
     },
     "Mackerel": {
         "emoji": "🐡",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Mackerel_at_fish_market.jpg",
+        "image": "https://freshkerala.co.in/wp-content/uploads/2020/10/mackerel-fish.jpg",
         "best_use": "Grilled or Curry",
         "cleaning": [
             "Remove scales.",
@@ -131,7 +131,7 @@ FISH_DATA = {
     },
     "Crab": {
         "emoji": "🦀",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/3/35/Blue_crab_on_white_background.jpg",
+        "image": "https://www.fabulousfish.co.uk/images/product/pasturiesed_crab_meat.jpg",
         "best_use": "Crab Masala",
         "cleaning": [
             "Detach the top shell and discard gills.",
@@ -163,7 +163,7 @@ FISH_DATA = {
     },
     "Octopus": {
         "emoji": "🐙",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Octopus_vulgaris_Mallorca.jpg",
+        "image": "https://freshkerala.co.in/wp-content/uploads/2020/10/squids-whole.jpg",
         "best_use": "Grilled Octopus",
         "cleaning": [
             "Remove beak and ink sac.",
