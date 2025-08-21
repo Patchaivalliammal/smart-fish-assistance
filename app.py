@@ -1,9 +1,12 @@
 import streamlit as st
 
-# Fish data (recipes, cleaning, benefits)
+# =========================
+# Fish Data
+# =========================
 FISH_DATA = {
     "Salmon": {
         "emoji": "🐟",
+        "image": "https://www.themealdb.com/images/ingredients/Salmon.png",
         "best_use": "Indian Style Curry",
         "cleaning": [
             "Remove head and tail.",
@@ -37,6 +40,7 @@ FISH_DATA = {
     },
     "Tuna": {
         "emoji": "🐠",
+        "image": "https://www.themealdb.com/images/ingredients/Tuna.png",
         "best_use": "Deep Fry",
         "cleaning": [
             "Remove scales and fins.",
@@ -67,6 +71,7 @@ FISH_DATA = {
     },
     "Shrimp": {
         "emoji": "🦐",
+        "image": "https://www.themealdb.com/images/ingredients/Shrimp.png",
         "best_use": "Indian Spiced Side Dish",
         "cleaning": [
             "Remove head and legs.",
@@ -95,105 +100,94 @@ FISH_DATA = {
             }
         }
     },
-    "Crab": {
-        "emoji": "🦀",
-        "best_use": "Soup",
+    "Mackerel": {
+        "emoji": "🐡",
+        "image": "https://www.themealdb.com/images/ingredients/Mackerel.png",
+        "best_use": "Grilled or Curry",
         "cleaning": [
-            "Remove shell and claws.",
-            "Take out gills and stomach sac.",
-            "Wash thoroughly under running water."
+            "Remove scales.",
+            "Cut open belly, remove guts.",
+            "Wash thoroughly with salt water."
         ],
         "benefits": [
-            "Rich in zinc and phosphorus.",
-            "Supports bone health.",
-            "Boosts immunity and metabolism."
+            "High in omega-3.",
+            "Supports brain and heart health.",
+            "Improves skin glow."
         ],
         "recipes": {
-            "Crab Soup": {
+            "Grilled Mackerel": {
                 "ingredients": [
-                    "Crab meat",
-                    "Onion, ginger, garlic",
-                    "Black pepper, turmeric, salt",
-                    "Coriander and curry leaves"
+                    "Mackerel",
+                    "Lemon juice, garlic, salt, pepper",
+                    "Olive oil"
                 ],
                 "steps": [
-                    "Boil crab meat with turmeric and salt.",
-                    "Sauté onion, ginger, garlic, and spices.",
-                    "Add crab stock and simmer.",
-                    "Garnish with coriander and serve hot."
-                ]
-            }
-        }
-    },
-    "Octopus": {
-        "emoji": "🐙",
-        "best_use": "Grilled Dish",
-        "cleaning": [
-            "Remove ink sac, beak, and internal organs.",
-            "Wash thoroughly with water.",
-            "Tenderize before cooking (boil or pound lightly)."
-        ],
-        "benefits": [
-            "Low in fat, high in protein.",
-            "Rich in vitamin B12 and iron.",
-            "Good for red blood cell production."
-        ],
-        "recipes": {
-            "Grilled Octopus": {
-                "ingredients": [
-                    "Octopus tentacles",
-                    "Olive oil, garlic, lemon juice",
-                    "Paprika, salt, pepper"
-                ],
-                "steps": [
-                    "Boil octopus until tender.",
-                    "Marinate with olive oil, garlic, and spices.",
-                    "Grill until slightly charred.",
-                    "Serve with lemon wedges."
+                    "Marinate fish with spices.",
+                    "Grill until golden and cooked inside.",
+                    "Serve with salad or rice."
                 ]
             }
         }
     }
 }
 
+# =========================
+# Streamlit UI
+# =========================
 st.set_page_config(page_title="Smart Fish Assistant", page_icon="🐟", layout="wide")
 
-st.title("🐟 Smart Fish Assistant")
-st.write("Select your favorite fish to discover recipes, cleaning steps, and health benefits.")
+st.markdown(
+    """
+    <h1 style='text-align:center; color:#1f77b4;'>🐟 Smart Fish Assistant</h1>
+    <p style='text-align:center; font-size:18px; color:#555;'>
+    Discover recipes, cleaning steps, and health benefits of your favorite seafood!
+    </p>
+    """,
+    unsafe_allow_html=True
+)
 
 # Fish selection
 fish_names = list(FISH_DATA.keys())
-fish_choice = st.selectbox("Choose a fish:", fish_names)
+fish_choice = st.selectbox("🎣 Choose a fish:", fish_names)
 
 if fish_choice:
     fish = FISH_DATA[fish_choice]
-    st.header(f"{fish['emoji']} {fish_choice}")
-    st.subheader(f"Best Use: {fish['best_use']}")
+
+    st.image(fish["image"], width=200)
+    st.markdown(
+        f"<h2 style='color:#ff6347;'>{fish['emoji']} {fish_choice}</h2>",
+        unsafe_allow_html=True
+    )
+    st.subheader(f"🍴 Best Use: {fish['best_use']}")
 
     tab1, tab2, tab3 = st.tabs(["🍲 Recipes", "🧼 Cleaning Steps", "💪 Benefits"])
 
     # Recipes Tab
     with tab1:
         recipe_names = list(fish["recipes"].keys())
-        recipe_choice = st.radio("Select a recipe:", recipe_names)
+        recipe_choice = st.radio("📌 Select a recipe:", recipe_names)
         recipe = fish["recipes"][recipe_choice]
-        
-        st.write("### Ingredients")
+
+        st.success("### 🥗 Ingredients")
         for ing in recipe["ingredients"]:
             st.checkbox(ing, key=f"{fish_choice}_{recipe_choice}_{ing}")
-        
-        st.write("### Steps")
+
+        st.info("### 👨‍🍳 Cooking Steps")
+        progress = 0
         for step in recipe["steps"]:
-            st.checkbox(step, key=f"{fish_choice}_{recipe_choice}_{step}")
+            if st.checkbox(step, key=f"{fish_choice}_{recipe_choice}_{step}"):
+                progress += 1
+
+        st.progress(progress / len(recipe["steps"]))
 
     # Cleaning Tab
     with tab2:
-        st.write("### How to Clean")
+        st.warning("### 🧽 How to Clean")
         for step in fish["cleaning"]:
             st.checkbox(step, key=f"{fish_choice}_clean_{step}")
 
     # Benefits Tab
     with tab3:
-        st.write("### Health Benefits")
+        st.success("### 🌿 Health Benefits")
         for benefit in fish["benefits"]:
-            st.markdown(f"✅ {benefit}")
+            st.markdown(f"<p style='color:green;'>✅ {benefit}</p>", unsafe_allow_html=True)
