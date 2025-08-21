@@ -128,6 +128,68 @@ FISH_DATA = {
                 ]
             }
         }
+    },
+    "Crab": {
+        "emoji": "🦀",
+        "image": "https://www.themealdb.com/images/ingredients/Crab.png",
+        "best_use": "Crab Masala",
+        "cleaning": [
+            "Detach the top shell and discard gills.",
+            "Wash thoroughly in salt water.",
+            "Crack claws gently for easy cooking."
+        ],
+        "benefits": [
+            "Rich in vitamin B12 and folate.",
+            "Good for bone and joint health.",
+            "Low in fat and high in protein."
+        ],
+        "recipes": {
+            "Crab Masala": {
+                "ingredients": [
+                    "Crab pieces",
+                    "Onion, tomato, ginger, garlic",
+                    "Chili powder, turmeric, pepper",
+                    "Curry leaves, oil, salt"
+                ],
+                "steps": [
+                    "Heat oil, sauté onion, ginger, garlic, and tomato.",
+                    "Add spices and mix well.",
+                    "Add cleaned crab and little water.",
+                    "Cook until crab turns red and masala thickens.",
+                    "Serve with rice."
+                ]
+            }
+        }
+    },
+    "Octopus": {
+        "emoji": "🐙",
+        "image": "https://www.themealdb.com/images/ingredients/Octopus.png",
+        "best_use": "Grilled Octopus",
+        "cleaning": [
+            "Remove beak and ink sac.",
+            "Turn head inside out and clean.",
+            "Wash tentacles thoroughly."
+        ],
+        "benefits": [
+            "High in iron and vitamin B12.",
+            "Good source of lean protein.",
+            "Supports muscle strength and energy."
+        ],
+        "recipes": {
+            "Grilled Octopus": {
+                "ingredients": [
+                    "Octopus",
+                    "Olive oil, lemon juice",
+                    "Garlic, oregano, salt, pepper"
+                ],
+                "steps": [
+                    "Boil octopus until tender.",
+                    "Marinate with olive oil, lemon, and spices.",
+                    "Grill until slightly charred.",
+                    "Serve with salad or bread."
+                ]
+            }
+        }
     }
 }
 
@@ -136,11 +198,36 @@ FISH_DATA = {
 # =========================
 st.set_page_config(page_title="Smart Fish Assistant", page_icon="🐟", layout="wide")
 
+# Custom colorful theme
+theme_style = """
+    <style>
+        body {
+            background: linear-gradient(135deg, #fceabb, #f8b500, #ff7e5f, #feb47b);
+            background-attachment: fixed;
+        }
+        h1 {
+            background: -webkit-linear-gradient(#ff416c, #ff4b2b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stTabs [role="tab"] p {
+            font-size:16px;
+            font-weight:bold;
+            color:#333;
+        }
+    </style>
+"""
+
+st.markdown(theme_style, unsafe_allow_html=True)
+
 st.markdown(
     """
-    <h1 style='text-align:center; color:#1f77b4;'>🐟 Smart Fish Assistant</h1>
-    <p style='text-align:center; font-size:18px; color:#555;'>
+    <h1 style='text-align:center;'>🐟 Smart Fish Assistant</h1>
+    <p style='text-align:center; font-size:18px; color:#222;'>
     Discover recipes, cleaning steps, and health benefits of your favorite seafood!
+    </p>
+    <p style='text-align:center; font-size:16px; color:#444;'>
+    👩‍💻 Developed by <b>K.Patchaivalliammal</b>
     </p>
     """,
     unsafe_allow_html=True
@@ -185,6 +272,13 @@ if fish_choice:
         st.warning("### 🧽 How to Clean")
         for step in fish["cleaning"]:
             st.checkbox(step, key=f"{fish_choice}_clean_{step}")
+
+    # Benefits Tab
+    with tab3:
+        st.success("### 🌿 Health Benefits")
+        for benefit in fish["benefits"]:
+            st.markdown(f"<p style='color:green;'>✅ {benefit}</p>", unsafe_allow_html=True)
+
 
     # Benefits Tab
     with tab3:
